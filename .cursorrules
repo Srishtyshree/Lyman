@@ -1,0 +1,35 @@
+# Layman App — Cursor Rules
+
+## Core Rules
+- This is a React Native Expo app (not a web app). Use RN components only.
+- Font family: ALWAYS use `PlusJakartaSans_500Medium`, `PlusJakartaSans_700Bold`, or `PlusJakartaSans_800ExtraBold`
+- Color primary: `#D97B47` (orange), background: `#FAF4F0` (cream)
+- Styles go in separate `*.styles.js` files, never inline beyond trivial cases
+- Use Ionicons from `@expo/vector-icons` for all icons
+
+## Article Structure
+All articles must conform to:
+```js
+{
+  id: string,           // unique identifier
+  headline: string,     // 7-9 words, conversational tone
+  image: string,        // URL
+  content: string[],    // exactly 3 elements (swipeable cards)
+  originalHeadline: string,
+  originalContent: string,
+  source: string,
+  url: string,
+  publishedAt: string
+}
+```
+
+## AI Chat Rules
+- Backend at `process.env.EXPO_PUBLIC_BACKEND_URL` (frontend) or port 5000 (local)
+- All Gemini responses: exactly 1-2 sentences in simple English
+- Suggestions: always 3, generated dynamically from article context
+
+## Supabase Rules
+- Client in `frontend/src/utils/supabase.js`
+- Use `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+- RLS is enabled — always pass user_id in queries
+- saved_articles: unique constraint on (user_id, article_id)
