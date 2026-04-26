@@ -158,7 +158,7 @@ app.post('/api/chat', async (req, res) => {
 
     // Try gemini-2.5-flash first, fall back to gemini-2.0-flash
     let text = '';
-    const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-flash-latest'];
+    const modelsToTry = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
     
     for (const modelName of modelsToTry) {
       try {
@@ -207,7 +207,7 @@ app.post('/api/suggestions', async (req, res) => {
       return res.json({ suggestions: getGenericSuggestions(headline) });
     }
 
-    const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-flash-latest'];
+    const modelsToTry = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
     let suggestions = null;
 
     for (const modelName of modelsToTry) {
@@ -259,7 +259,7 @@ app.post('/api/translate', async (req, res) => {
       return res.status(401).json({ error: 'Gemini API key is missing' });
     }
 
-    const modelsToTry = ['gemini-2.5-flash', 'gemini-2.0-flash', 'gemini-flash-latest'];
+    const modelsToTry = ['gemini-1.5-flash', 'gemini-1.5-pro', 'gemini-pro'];
     let resultJSON = null;
 
     for (const modelName of modelsToTry) {
